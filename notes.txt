@@ -1,0 +1,17 @@
+https://laraveltuts.com/step-by-step-guide-to-user-role-and-permission-tutorial-in-laravel-10/
+https://www.youtube.com/watch?v=Fy3sC6fHPk8
+
+https://spatie.be/docs/laravel-permission/v6/introduction
+
+
+https://spatie.be/docs/laravel-permission/v6/installation-laravel
+
+-> composer create-project laravel/laravel lara-spatie-acl
+
+-> composer require spatie/laravel-permission
+
+-> composer require spatie/laravel-html
+
+php artisan optimize:clear
+ # or
+php artisan config:clear
