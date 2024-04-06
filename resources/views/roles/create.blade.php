@@ -23,12 +23,12 @@
         </div>
     @endif
 
-    {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
+    {{ html()->form('POST', route('roles.store'))->open() }}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                {{ html()->text('name', null)->class('form-control')->placeholder('Name') }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -36,8 +36,11 @@
                 <strong>Permission:</strong>
                 <br/>
                 @foreach($permission as $value)
-                    <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                        {{ $value->name }}</label>
+                    <label>
+{{--                        {{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}--}}
+                        {{ html()->checkbox('permission[]', false, $value->name)->class('name') }}
+                        {{ $value->name }}
+                    </label>
                     <br/>
                 @endforeach
             </div>
@@ -46,7 +49,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-    {!! Form::close() !!}
-
-    <p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
+    {{ html()->form()->close() }}
 @endsection

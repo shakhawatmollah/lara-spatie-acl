@@ -23,12 +23,12 @@
         </div>
     @endif
 
-    {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+    {{ html()->model($role)->form('PATCH',route('roles.update', $role->id))->open() }}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                {{ html()->text('name', null)->class('form-control')->placeholder('Name') }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -36,8 +36,10 @@
                 <strong>Permission:</strong>
                 <br/>
                 @foreach($permission as $value)
-                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                        {{ $value->name }}</label>
+                    <label>
+                        {{ html()->checkbox('permission[]', in_array($value->id, $rolePermissions) ? true : false, $value->name)->class('name') }}
+                        {{ $value->name }}
+                    </label>
                     <br/>
                 @endforeach
             </div>
@@ -46,7 +48,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-    {!! Form::close() !!}
-
+    {{ html()->form()->close() }}
 @endsection
-<p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
